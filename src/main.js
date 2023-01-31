@@ -37,9 +37,10 @@ myLibrary.forEach(book => {
     newDiv.appendChild(newP);
 });
 
-const submitButton  = addEventListener('submit', checkInput);
+const submitButton  = addEventListener('submit', submitForm);
 
-function submitForm () {
+function submitForm (event) {
+    event.preventDefault();
     let author = document.getElementById('author').value;
     let title = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
@@ -60,17 +61,7 @@ function submitForm () {
     let newP = document.createElement('p');
     newP.textContent = `${title} by ${author}, ${pages} pages, ${read}`;
     newDiv.appendChild(newP);
-}
 
-function checkInput(event) {
-    event.preventDefault();
-    let author = document.getElementById('author').value;
-    let title = document.getElementById('author').value;
-    let pages = document.getElementById('pages').value;
-
-    if (author === '' || title === '' || pages === '') {
-        alert('Please fill in all fields');
-    } else {
-        submitForm();
-    }
+    document.getElementById('closeModal').click();
+    
 }
