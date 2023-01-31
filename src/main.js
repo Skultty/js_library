@@ -74,6 +74,11 @@ function submitForm (event) {
     let pages = document.getElementById('pages').value;
     let read = document.getElementById('read').checked;
 
+    if (checkDuplicate(title)) {
+        alert('This book is already in your library');
+        return;
+    }
+
     console.log(author, title, pages, read);
     
     if (read) {
@@ -87,4 +92,20 @@ function submitForm (event) {
 
     document.getElementById('closeModal').click();
     
+}
+
+function resetForm() {
+    document.getElementById('name').value = '';
+    document.getElementById('author').value = '';
+    document.getElementById('pages').value = '';
+    document.getElementById('read').checked = false;
+}
+
+function checkDuplicate(title) {
+    let duplicate = myLibrary.find(book => book.title === title);
+    if (duplicate) {
+        return true;
+    } else {
+        return false;
+    }
 }
