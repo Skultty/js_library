@@ -36,3 +36,41 @@ myLibrary.forEach(book => {
     // Add the paragraph to the div
     newDiv.appendChild(newP);
 });
+
+const submitButton  = addEventListener('submit', checkInput);
+
+function submitForm () {
+    let author = document.getElementById('author').value;
+    let title = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+    let read = document.getElementById('read').checked;
+
+    console.log(author, title, pages, read);
+    
+    if (read) {
+        read = 'read';
+    } else {
+        read = 'not read yet';
+    }
+
+    addBookToLibrary(author, title, pages, read);
+    let newDiv = document.createElement('div');
+    newDiv.classList.add('book');
+    document.getElementById('content').appendChild(newDiv);
+    let newP = document.createElement('p');
+    newP.textContent = `${title} by ${author}, ${pages} pages, ${read}`;
+    newDiv.appendChild(newP);
+}
+
+function checkInput(event) {
+    event.preventDefault();
+    let author = document.getElementById('author').value;
+    let title = document.getElementById('author').value;
+    let pages = document.getElementById('pages').value;
+
+    if (author === '' || title === '' || pages === '') {
+        alert('Please fill in all fields');
+    } else {
+        submitForm();
+    }
+}
