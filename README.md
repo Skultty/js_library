@@ -13,6 +13,7 @@
 <h2>Technology Stack</h2>
 
 <ul>
+  <li>HTML</li>
   <li>JavaScript</li>
   <li>Tailwind CSS</li>
 </ul>
