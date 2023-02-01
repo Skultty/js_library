@@ -33,8 +33,8 @@ function render() {
         let newDiv = document.createElement('div');
         newDiv.classList.add('flex', 'flex-col', 'justify-center', 'items-center', 'border', 'border-black', 'p-4', 'm-4', 'rounded-md', 'bg-gray-200', 'w-1/4');
         newDiv.innerHTML = `
-        <p>${book.author}</p>
         <p>${book.title}</p>
+        <p>${book.author}</p>
         <p>${book.pages} pages</p>
         <p>${book.read}</p>
         <div class="flex  justify-between w-full">
@@ -73,8 +73,8 @@ const submitButton  = addEventListener('submit', submitForm);
 
 function submitForm (event) {
     event.preventDefault();
-    let author = document.getElementById('name').value;
-    let title = document.getElementById('author').value;
+    let title = document.getElementById('name').value;
+    let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
     let read = document.getElementById('read').checked;
 
