@@ -11,6 +11,14 @@ Book.prototype.info = function() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
 }
 
+Book.prototype.statusChange = function() {
+    if (this.read === 'read') {
+        this.read = 'not read yet';
+    } else {
+        this.read = 'read';
+    }
+}
+
 function addBookToLibrary(author, title, pages, read) {
     let book = new Book(author, title, pages, read);
     myLibrary.push(book);
@@ -48,11 +56,7 @@ function render() {
 function changeStatus(event) {
     let bookTitle = event.target.id;
     let book = myLibrary.find(book => book.title === bookTitle);
-    if (book.read === 'read') {
-        book.read = 'not read yet';
-    } else {
-        book.read = 'read';
-    }
+    book.statusChange();
     event.target.parentElement.previousElementSibling.textContent = book.read;
 }
 
