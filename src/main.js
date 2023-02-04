@@ -1,21 +1,24 @@
 let myLibrary = [];
 
-function Book(author, title, pages, read) {
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read;
-}
 
-Book.prototype.info = function() {
-    return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
-}
+class Book {
+    constructor(author, title, pages, read) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.read = read;
+    }
 
-Book.prototype.statusChange = function() {
-    if (this.read === 'read') {
-        this.read = 'not read yet';
-    } else {
-        this.read = 'read';
+    info() {
+        return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`;
+    }
+
+    toggleRead() {
+        if (this.read === 'read') {
+            this.read = 'not read yet';
+        } else {
+            this.read = 'read';
+        }
     }
 }
 
@@ -56,7 +59,7 @@ function render() {
 function changeStatus(event) {
     let bookTitle = event.target.id;
     let book = myLibrary.find(book => book.title === bookTitle);
-    book.statusChange();
+    book.toggleRead();
     event.target.parentElement.previousElementSibling.textContent = book.read;
 }
 
@@ -95,7 +98,7 @@ function submitForm (event) {
     render();
 
     document.getElementById('closeModal').click();
-    
+    resetForm();
 }
 
 function resetForm() {
